@@ -1,27 +1,29 @@
-Feature: Tela de cadastro - Checkout
+ #language: pt-br
+
+Funcionalidade: Tela de cadastro - Checkout
     Como cliente da EBAC-SHOP
     Quero fazer concluir meu cadastro
     Para finalizar minha compra
 
-    Background:
-        Given que eu esteja a página de Checkout da EBAC SHOP
+    Contexto:
+        Dado que eu esteja a página de Checkout da EBAC SHOP
         
-    Scenario: Preencher campos obrigatórios da compra
-        When eu preencher todos os campos obrigatórios
-        And clicar em "finalizar compra"
-        Then deve exibir uma mensagem "Compra efetuada com sucesso!"
+    Cenário: Preencher campos obrigatórios da compra
+        Quando eu preencher todos os campos obrigatórios
+        E clicar em "finalizar compra"
+        Então deve exibir uma mensagem "Compra efetuada com sucesso!"
 
-    Scenario: Validar formato de email
-        When eu preencher o campo email
-        And o email estiver fora do formato padrão
-        Then deve exibir uma mensagem "Email com formato inválido"
+    Cenário: Validar formato de email
+        Quando eu preencher o campo email
+        E o email estiver fora do formato padrão
+        Então deve exibir uma mensagem "Email com formato inválido"
 
-    Scenario Outline: Cadastrar com campos vazios
-        When eu deixar o <campoObrigatorio> vazio
-        And clicar em "finalizar compra"
-        Then deve exibir a <mensagem>
+    Esquema do Cenário: Cadastrar com campos vazios
+        Quando eu deixar o <campoObrigatorio> vazio
+        E clicar em "finalizar compra"
+        Então deve exibir a <mensagem>
 
-        Examples:
+        Exemplos:
             | campoObrigatorio | mensagem                           |
             | nome             | "Preencha todos os campos com o *" |
             | sobrenome        | "Preencha todos os campos com o *" |
